@@ -31,7 +31,7 @@ class Home extends StatelessWidget {
           ),
         ),
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<List<SongModel>>(
         future: controller.audioQuery.querySongs(
           ignoreCase: true,
           orderType: OrderType.ASC_OR_SMALLER,
@@ -63,11 +63,11 @@ class Home extends StatelessWidget {
                       ),
                       tileColor: bgColor,
                       title: Text(
-                        "Music name",
+                        snapshot.data![index].displayNameWOExt,
                         style: ourStyle(family: bold, size: 15),
                       ),
                       subtitle: Text(
-                        "Artist name",
+                        "${snapshot.data![index].artist}",
                         style: ourStyle(family: regular, size: 12),
                       ),
                       leading: const Icon(
