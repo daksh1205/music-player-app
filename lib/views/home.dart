@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:music_player_app/consts/colors.dart';
 import 'package:music_player_app/consts/text_style.dart';
 import 'package:music_player_app/controllers/player_controller.dart';
+import 'package:music_player_app/views/player.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class Home extends StatelessWidget {
@@ -80,12 +81,14 @@ class Home extends StatelessWidget {
                             size: 32,
                           ),
                         ),
-                        trailing: controller.playIndex.value == index
+                        trailing: controller.playIndex.value == index &&
+                                controller.isPlaying.value
                             ? const Icon(Icons.play_arrow,
                                 color: whiteColor, size: 26)
                             : null,
                         onTap: () {
-                          controller.playSong(snapshot.data![index].uri, index);
+                          Get.to(() => const Player());
+                          // controller.playSong(snapshot.data![index].uri, index);
                         },
                       ),
                     ),
